@@ -1,0 +1,803 @@
+* {  
+    margin: 0;  
+    padding: 0;  
+    box-sizing: border-box;  
+    text-decoration: none;  
+    border: none;  
+    outline: none;  
+    scroll-behavior: smooth;  
+    font-family: "Poppins", sans-serif;  
+}  
+
+:root {  
+    --bg-color: rgb(15, 15, 15);  
+    --second-bg-color: #1A1A1A; /* Fundo secundário um pouco mais claro */
+    --text-color: white;  
+    
+    /* Cores da paleta de roxos mais claros */
+    --purple-lightest: #C4A6DA; /* O mais claro da imagem */
+    --purple-light: #B291D1;    /* O segundo mais claro (novo main-color) */
+    --purple-medium-soft: #9E7BB5; /* O terceiro, para um contraste suave */
+    --purple-darker-soft: #7F60A3; /* Um roxo levemente mais profundo para detalhes */
+
+    --main-color: var(--purple-light); /* Novo main-color: roxo suave */
+    --secondary-color: var(--purple-medium-soft); /* Novo secondary-color: roxo médio suave */
+    --main-gradient: linear-gradient(135deg, var(--purple-lightest), var(--purple-light)); /* Degradê suave */
+}  
+
+html {  
+    font-size: 62.5%;  
+    overflow-x: hidden;  
+}  
+
+body {  
+    background-color: var(--bg-color);  
+    color: var(--text-color);  
+}  
+
+/* HEADER */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 3rem 9%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 2.5rem;
+  color: var(--text-color);  
+  font-weight: 800; 
+  cursor: pointer;  
+  transition: 0.3s ease;
+}
+.logo span {
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.logo:hover {  
+    transform: scale(1.1);  
+} 
+
+.navbar a {
+  font-size: 1.8rem;
+  color: #ccc;
+  
+  padding: 8px 20px;
+  border: 1px solid transparent;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+/* Caixinha envolta */
+.navbar a:hover,
+.navbar a.active {
+  color: #fff;
+  border: 1px solid var(--main-color);
+  box-shadow: 0 0 10px var(--main-color);
+}
+
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--main-color);
+    display: none;
+}
+
+/* CORREÇÃO APLICADA AQUI: Adicionado :not(.home) */
+section:not(.home) {
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;     
+  padding: 5rem 9%;
+  text-align: center;
+}
+
+/* Ajuste para sections com grids ou flex internos */
+.courses,
+.projects,
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home {
+    min-height: 105vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    padding-top: 3rem;  
+    padding-bottom: 3rem; 
+} 
+
+.home-content h3 {  
+    font-size: 3.2rem;  
+    font-weight: 700;  
+}  
+
+span {  
+    color: var(--main-color);  
+}  
+
+.home-content h1 {  
+    font-size: 4rem; 
+    font-weight: 700;  
+    line-height: 1.3;  
+}   
+
+.home-img img {  
+    width: 300px;  
+    height: auto;  
+    border-radius: 50%;  
+    box-shadow: 0 0 25px var(--main-color);
+    z-index: 1;
+}  
+
+.home-content p {  
+    font-size: 1.8rem;  
+    font-weight: 500;  
+    margin: 1rem 0;  
+}   
+
+.social-icons a {  
+    display: inline-flex;  
+    justify-content: center;  
+    align-items: center;  
+    width: 4rem;  
+    height: 4rem;  
+    background: transparent;  
+    border: 0.2rem solid var(--main-color);  
+    font-size: 2rem;  
+    border-radius: 50%;  
+    color: var(--main-color);  
+    margin: 3rem 1.5rem 3rem 0;  
+    transition: 0.3s ease;  
+}  
+
+.social-icons a:hover {  
+    color: white;  
+    transform: scale(1.3) translateY(-5px);  
+    background: var(--main-gradient);  /* Fundo com degradê */
+    border: none;
+    box-shadow: 0 0 25px var(--main-color);  
+}  
+
+.btn {  
+    padding: 15px 30px;  
+    background: transparent;
+    border-radius: 5px;  
+    font-size: 1.8rem;  
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    margin-top: 20px;  
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;  
+}  
+
+.btn:hover {  
+    transform: scale(1.05);
+    background: var(--main-gradient); /* Fundo com degradê */
+    color: var(--text-color);  
+    border-color: transparent;
+    box-shadow: 0 0 25px var(--main-color);
+}  
+
+.text-animation{
+    font-size: 34px;
+    font-weight: 600;
+    min-width: 280px;
+}
+.text-animation span{
+    position: relative;
+}
+.text-animation span::before{
+    content: 'Designer';
+    background: var(--main-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: words 20s infinite;
+}
+.text-animation span::after{
+    content: '';
+    background-color: var(--bg-color);
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 100%;
+    border-left: 3px solid var(--bg-color);
+    right: -8px;
+    animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
+}
+
+@keyframes cursor {
+    to{
+        border-left: 2px solid var(--main-color);
+    }
+}
+
+@keyframes words {
+    0%, 20% { content: 'Desenvolvedora Web'; }
+    21%, 40% { content: 'Web Designer'; }
+    41%, 60% { content: 'Data Labeler'; }
+    61%, 80% { content: 'Estudante de Análise e Desenvolvimento de Sistemas'; }
+    81%, 100% { content: 'Software Developer'; }
+}
+@keyframes typing{
+    10%, 15%, 30%, 35%, 50%, 55%, 70%, 75%, 90%, 95% { width: 0; }
+    5%, 20%, 25%, 40%, 45%, 60%, 65%, 80%, 85% { width: calc(100% + 8px); }
+}
+.heading{
+    text-align: center;
+    font-size: 6rem;
+}
+
+/* Cursos*/
+.courses {
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.courses .titulo {
+  font-size: 35px;
+  font-weight: 700;
+  color: var(--main-color);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.courses .subtitulo {
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 40px;
+  color: #cfcfcf;
+}
+
+/* Linha do tempo de Cursos (antiga) */
+.linha-tempo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin: 50px 0 40px;
+}
+
+.linha-tempo::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: var(--main-gradient);
+  box-shadow: 0 0 12px var(--main-color);
+  z-index: 1;
+}
+
+.icone {
+  background: #1e1e1e;
+  border: 2px solid var(--main-color);
+  border-radius: 50%;
+  padding: 18px;
+  z-index: 2;
+  color: #fff;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: #1d1d1d;
+  border-radius: 12px;
+  padding: 25px 20px;
+  text-align: left;
+  box-shadow: 0 0 15px rgba(178, 145, 209, 0.4); /* Sombra com o main-color suave */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 18px rgba(0,0,0,0.4);
+}
+
+.card h3 {
+  font-size: 18px;
+  margin: 12px 0;
+  color: #fff;
+}
+
+.card p {
+  font-size: 14px;
+  color: #cfcfcf;
+  line-height: 1.6;
+}
+
+/* Tags coloridas baseadas na nova paleta de roxos claros */
+.tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 18px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  color: #fff;
+  text-transform: uppercase;
+}
+.pink   { background: var(--purple-lightest); } 
+.blue   { background: var(--purple-light); } 
+.orange { background: var(--purple-medium-soft); } 
+.green  { background: var(--purple-darker-soft); } 
+.purple { background: var(--purple-light); } /* Repetindo para manter a suavidade */
+.teal   { background: var(--purple-medium-soft); } 
+
+/* ================================================= */
+/* NOVO ESTILO DA SEÇÃO DE PROJETOS (CLEAN)          */
+/* ================================================= */
+
+.projects {
+  padding: 8rem 4%;
+  background: var(--bg-color); /* Fundo um pouco mais escuro para destacar os cards */
+}
+
+.projects h2 {
+  font-size: 4rem;
+  margin-bottom: 5rem;
+  color: var(--main-color);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Cards menores e mais flexíveis */
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background: var(--second-bg-color);
+  border: 1.5px solid #2a2a2a; /* Borda sutil */
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  overflow: hidden; /* Garante que a imagem respeite as bordas */
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 20px var(--main-color);
+  border-color: var(--main-color);
+}
+
+.project-image {
+  width: 100%;
+  aspect-ratio: 4/3; /* Proporção de imagem mais quadrada */
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05); /* Efeito de zoom sutil */
+}
+
+.project-info {
+  padding: 2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-title {
+  font-size: 2rem;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.project-links a {
+  font-size: 2.4rem; /* Tamanho dos ícones */
+  color: var(--secondary-color);
+  margin-left: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.project-links a:hover {
+  color: var(--main-color);
+}
+
+/* ================================================= */
+/* NOVO ESTILO TIMELINE DE FORMAÇÃO - HORIZONTAL    */
+/* ================================================= */
+
+.timeline-section {
+  padding: 10rem 2rem; /* Mais espaço vertical na seção */
+  background: var(--second-bg-color);
+}
+
+.timeline-section h2 {
+  font-size: 4rem; /* Um pouco menor que o heading principal */
+  margin-bottom: 6rem; /* Mais espaço para a timeline */
+  color: var(--main-color);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.timeline-items {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alinha os cards pela parte de cima */
+  gap: 4rem; /* Aumenta o espaço horizontal entre os cards */
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* A LINHA HORIZONTAL */
+.timeline-items::before {
+  content: "";
+  position: absolute;
+  top: 7.5px; /* Alinha verticalmente com o centro do ponto (que tem 15px) */
+  left: 5%;
+  right: 5%;
+  height: 3px;
+  background: var(--main-gradient);
+  box-shadow: 0 0 12px var(--main-color);
+  border-radius: 3px;
+  z-index: 1; /* Fica atrás do ponto */
+}
+
+.timeline-item {
+  position: relative; /* Essencial para posicionar o ponto */
+  flex: 1;
+  max-width: 260px; /* Controla a largura máxima dos cards */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o conteúdo dentro do item */
+}
+
+/* O NOVO PONTO PEQUENO */
+.timeline-dot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 15px;
+  background: var(--main-color);
+  border: 3px solid var(--second-bg-color); /* Efeito de "furo" na linha */
+  border-radius: 50%;
+  z-index: 2; /* Fica na frente da linha */
+  box-shadow: 0 0 12px var(--main-color);
+}
+
+.timeline-date {
+  font-size: 1.6rem; /* Fonte maior */
+  font-weight: 600;
+  color: var(--main-color);
+  margin-top: 30px; /* Espaço abaixo do ponto */
+  text-align: center;
+}
+
+.timeline-content {
+  background: var(--bg-color);
+  border: 1.5px solid var(--main-color);
+  border-radius: 12px;
+  padding: 2.5rem; /* Mais espaço interno */
+  margin-top: 1.5rem; /* Espaço abaixo da data */
+  font-size: 1.5rem;
+  line-height: 1.6;
+  width: 100%;
+  box-shadow: 0 0 12px var(--secondary-color), inset 0 0 6px rgba(158, 123, 181, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 280px; /* Altura mínima para alinhar visualmente */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.timeline-content:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 20px var(--main-color), inset 0 0 8px rgba(178, 145, 209, 0.5);
+}
+
+.timeline-content h3 {
+  font-size: 2rem; /* Fonte maior */
+  margin-bottom: 1rem;
+}
+
+.timeline-content p {
+  font-size: 1.4rem; /* Fonte maior */
+}
+
+.timeline-logo {
+  width: 30px; /* Logo maior */
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.contact {
+    background-color: var(--second-bg-color);
+}
+
+.contact h2 {
+    margin-bottom: 3rem;
+    font-size: 35px;
+    font-weight: 700;
+    color: var(--main-color);
+    text-transform: uppercase;
+}
+
+.contact form {
+    max-width: 70rem;
+    margin: 1rem auto;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contact form .input-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact form .input-box input,
+.contact form textarea {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    background: var(--bg-color);
+    border: 1px solid var(--main-color);
+    border-radius: 0.8rem;
+    box-shadow: 0 0 8px var(--main-color);
+    margin: 1rem 0;
+    resize: none;
+}
+
+.contact form .input-box input:focus,
+.contact form textarea:focus {
+    box-shadow: 0 0 12px var(--main-color);
+    outline: none;
+}
+
+.contact form .btn {
+    margin-top: 2rem;
+    cursor: pointer;
+    border: 1px solid var(--main-color);
+    border-radius: 0.8rem;
+    box-shadow: 0 0 8px var(--main-color);
+    transition: 0.3s ease-in-out;
+}
+
+.contact form .btn:hover {
+    box-shadow: 0 0 15px var(--main-color);
+    transform: scale(1.05);
+}
+
+/* --- Mensagem de feedback --- */
+#form-message {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.6rem;
+    color: white;
+    background: var(--main-gradient); /* Fundo com degradê */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 9999;
+    text-align: center;
+}
+
+#form-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#form-message.error {
+    background: linear-gradient(135deg, #e74c3c, #c0392b); 
+}
+
+.hidden {
+    display: none;
+}
+
+/*FOOTER*/
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding: 25px 0; 
+    background-color: #000; 
+    border-top: 1px solid #444; 
+    text-align: center;
+}
+
+.footer .social {
+    margin-bottom: 15px; 
+}
+
+.footer .social a {
+    font-size: 24px; 
+    color: #fff;
+    border: 2px solid #fff;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 10px;
+    transition: 0.3s ease;
+}
+
+.footer .social a:hover {
+    transform: scale(1.2) translateY(-5px);
+    background: var(--main-gradient);
+    border-color: transparent;
+    color: #fff;
+}
+
+.footer .copyright {
+    margin-top: 10px;
+    font-size: 16px; 
+    color: #fff;
+}
+
+
+/*RESPONSIVIDADE*/
+@media (max-width: 1200px) {
+  html {
+    font-size: 55%;
+  }
+
+  .projects-container {
+    padding-bottom: 7rem;
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0 5rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  header {
+    padding: 2rem 3%;
+  }
+
+  section {
+    padding: 10rem 3% 2rem;
+  }
+
+  .courses {
+    padding-bottom: 7rem;
+  }
+
+  .footer {
+    padding: 2rem 3%;
+  }
+}
+
+@media (max-width: 955px) {
+  #menu-icon {
+    display: block;
+  }
+
+  .navbar {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 40%;
+    border-left: 3px solid var(--main-color);
+    border-bottom: 3px solid var(--main-color);
+    border-bottom-left-radius: 2em;
+    padding: 1rem 3%;
+    background: var(--second-bg-color);
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+    display: none;
+  }
+
+  .navbar.active {
+    display: block;
+  }
+  .navbar a { /* Regra mais geral para o menu hamburguer */
+    display: block;
+    font-size: 2rem;
+    margin: 3rem 0;
+  }
+
+  .home {
+    flex-direction: column;
+    margin: 5rem 4rem;
+  }
+
+  .home-content h3 {
+    font-size: 2.6rem;
+  }
+
+  .home-content h1 {
+    font-size: 5rem;
+  }
+
+  .home-img img {
+    width: 70vw;
+    margin-top: 4rem;
+  }
+  .courses h2{
+    margin-bottom: 3rem;
+  }
+  .projects h2{
+    margin-bottom: 3rem;
+  }
+  
+  /* RESPONSIVIDADE PARA TIMELINE HORIZONTAL */
+  .timeline-items {
+    flex-direction: column; /* Transforma em vertical */
+    align-items: center;
+    gap: 5rem; /* Espaço vertical entre os itens no mobile */
+  }
+
+  .timeline-items::before {
+    display: none;
+  }
+  
+  .timeline-dot {
+      position: relative; /* Volta ao fluxo normal */
+      transform: none;
+      left: auto;
+      margin-bottom: 2rem;
+  }
+  
+  .timeline-date {
+      margin-top: 0;
+  }
+
+  .timeline-item {
+      max-width: 400px; /* Permite que o card ocupe mais largura */
+      width: 90%;
+  }
+}
