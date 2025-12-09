@@ -106,14 +106,23 @@ section:not(.home) {
 }
 
 /* HOME */
+/* HOME */
 .home {
     min-height: 105vh; 
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 5rem;
+    /* MODIFICADO: Empurra o texto e a imagem para os cantos */
+    justify-content: space-between; 
+    
+    /* O GAP é mantido como backup de espaçamento */
+    gap: 10rem;
+    
     padding-top: 3rem;  
     padding-bottom: 3rem; 
+    
+    /* NOVO: Define uma largura máxima e centraliza a seção na página */
+    max-width: 1200px;
+    margin: 0 auto; 
 } 
 
 .home-content h3 {  
@@ -125,6 +134,13 @@ span {
     color: var(--main-color);  
 }  
 
+.home-actions {
+    display: flex; /* Habilita Flexbox */
+    align-items: center; /* Alinha verticalmente no centro */
+    gap: 2rem; /* Espaçamento entre o botão e os ícones sociais */
+    margin-top: 3rem; /* Espaçamento da parte de cima (parágrafo) */
+}
+
 .home-content h1 {  
     font-size: 4rem; 
     font-weight: 700;  
@@ -132,17 +148,23 @@ span {
 }   
 
 .home-img img {  
-    width: 300px;  
+    width: 400px;  
     height: auto;  
-    border-radius: 50%;  
-    box-shadow: 0 0 25px var(--main-color);
+    /* MODIFICAÇÃO: border-radius: 50%; e box-shadow removidos para tirar o círculo */
+    
+    /* NOVO: Adiciona a animação de flutuação */
+    animation: floatImage 4s ease-in-out infinite;
+    transition: transform 0.3s ease;
     z-index: 1;
 }  
 
 .home-content p {  
     font-size: 1.8rem;  
     font-weight: 500;  
-    margin: 1rem 0;  
+    margin: 1rem 0;
+    /* MODIFICADO: Estica o texto um pouco mais (de 500px para 600px) */
+    max-width: 600px;  
+    line-height: 1.7;
 }   
 
 .social-icons a {  
@@ -156,9 +178,10 @@ span {
     font-size: 2rem;  
     border-radius: 50%;  
     color: var(--main-color);  
-    margin: 3rem 1.5rem 3rem 0;  
+    /* MODIFICAÇÃO: Ajustamos a margem para trabalhar melhor no Flexbox */
+    margin: 0 1.5rem 0 0; 
     transition: 0.3s ease;  
-}  
+}
 
 .social-icons a:hover {  
     color: white;  
@@ -175,12 +198,12 @@ span {
     font-size: 1.8rem;  
     color: var(--main-color);
     border: 2px solid var(--main-color);
-    margin-top: 20px;  
+    /* REMOVIDO: margin-top: 20px; */ 
     letter-spacing: 0.1rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;  
-}  
+} 
 
 .btn:hover {  
     transform: scale(1.05);
@@ -216,6 +239,20 @@ span {
     animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
 }
 
+/* Keyframes para a animação de flutuação da imagem */
+@keyframes floatImage {
+    0% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-20px); /* Move a imagem 20px para cima */
+    }
+    100% { 
+        transform: translateY(0); 
+    }
+}
+
+/* Keyframes de animação do texto */
 @keyframes cursor {
     to{
         border-left: 2px solid var(--main-color);
